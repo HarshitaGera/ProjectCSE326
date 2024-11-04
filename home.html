@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Better Communication with Developers</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="home.html" target="_blank">Home</a></li>
+        <li><a href="about.html" target="_blank">About</a></li>
+        <li><a href="services.html"target="_blank">Services</a></li>
+        <li><a href="testimonials.html" target="_blank">Testimonials</a></li>
+        <li><a href="resources.html" target="_blank">Resources</a></li>
+        <li><a href="faq.html" target="_blank">FAQ</a></li>
+        <li><a href="contact.html" target="_blank">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Better Communication with Developers</h1>
+    <p>Streamlining collaboration and enhancing productivity.</p>
+    <button class="cta-button">Learn More</button>
+  </header>
+
+  <main class="main-content">
+    <section class="benefits">
+      <h2>Why Effective Communication Matters</h2>
+      <p>Improving communication with developers leads to smoother workflows, reduces misunderstandings, and builds stronger, more successful projects.</p>
+      <ul>
+        <li><strong>Clarity:</strong> Convey your ideas effectively.</li>
+        <li><strong>Efficiency:</strong> Avoid unnecessary rework.</li>
+        <li><strong>Trust:</strong> Build stronger relationships with your team.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>Our mission is to improve collaboration between teams and developers by promoting effective communication and best practices.</p>
+    </div>
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        
+      </ul>
+    </div>
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/"><img src="images/facebook.png" alt="Facebook"></a>
+        <a href="https://x.com/i/flow/login"><img src="images/twitter.png" alt="Twitter"></a>
+        <a href="https://www.linkedin.com/login/in"><img src="images/linkedIn.png" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com/"><img src="images/instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Better Communication with Developers | All Rights Reserved</p>
+  </div>
+</footer>
+
+
+
+  <script >
+    document.addEventListener("DOMContentLoaded", () => {
+  const learnMoreBtn = document.getElementById("learn-more-btn");
+  const responseMessage = document.getElementById("response-message");
+  const contactForm = document.getElementById("contact-form");
+
+  // Scroll to tips section
+  learnMoreBtn.addEventListener("click", () => {
+    document.getElementById("tips").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Handle contact form submission
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    responseMessage.textContent = "Thank you! Your message has been sent.";
+    contactForm.reset();
+  });
+});
+
+
+  </script>
+</body>
+</html>

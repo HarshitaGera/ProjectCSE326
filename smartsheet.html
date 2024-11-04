@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Interactive SmartSheet</title>
+ <style>
+    /* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5em;
+  color: #0073e6;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Form Section */
+.form-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#add-tip-form {
+  display: inline-flex;
+  gap: 10px;
+}
+
+#add-tip-form input,
+#add-tip-form button,
+#sort-button {
+  padding: 8px;
+  font-size: 1em;
+}
+
+#add-tip-form button,
+#sort-button {
+  background-color: #0073e6;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#add-tip-form button:hover,
+#sort-button:hover {
+  background-color: #005bb5;
+}
+
+/* Delete Button */
+.delete-button {
+  background-color: #e60000;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #b30000;
+}
+
+/* SmartSheet Table */
+.smartsheet {
+  display: grid;
+  gap: 1px;
+  background-color: #ccc;
+  border: 1px solid #ddd;
+}
+
+.sheet-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr auto;
+  background-color: #fff;
+}
+
+.header-row {
+  background-color: #0073e6;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sheet-cell {
+  padding: 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.sheet-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sheet-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+ </style>
+</head>
+<body>
+
+  <header>
+    <h1>Improving Team Communication</h1>
+    <p>Strategies and Tips for Effective Collaboration</p>
+  </header>
+
+  <!-- Form to Add New Row -->
+  <section class="form-section">
+    <h2>Add a New Tip</h2>
+    <form id="add-tip-form">
+      <input type="text" id="category" placeholder="Category" required>
+      <input type="text" id="tip" placeholder="Tips & Strategies" required>
+      <input type="text" id="benefit" placeholder="Benefits" required>
+      <button type="submit">Add Tip</button>
+    </form>
+    <button id="sort-button">Sort by Category</button>
+  </section>
+
+  <!-- SmartSheet Table -->
+  <section class="smartsheet" id="smartsheet">
+    <div class="sheet-row header-row">
+      <div class="sheet-cell">Category</div>
+      <div class="sheet-cell">Tips & Strategies</div>
+      <div class="sheet-cell">Benefits</div>
+      <div class="sheet-cell">Actions</div>
+    </div>
+
+    <!-- Initial SmartSheet Rows -->
+    <div class="sheet-row">
+      <div class="sheet-cell">Clear Objectives</div>
+      <div class="sheet-cell">Define goals and expectations early on to ensure everyone is aligned on project outcomes.</div>
+      <div class="sheet-cell">Improved focus and clarity for the team.</div>
+      <div class="sheet-cell"><button class="delete-button">Delete</button></div>
+    </div>
+  </section>
+  
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("add-tip-form");
+  const smartsheet = document.getElementById("smartsheet");
+  const sortButton = document.getElementById("sort-button");
+
+  // Function to add a new row
+  function addRow(category, tip, benefit) {
+    const newRow = document.createElement("div");
+    newRow.classList.add("sheet-row");
+
+    // Create cells and add values
+    const categoryCell = document.createElement("div");
+    categoryCell.classList.add("sheet-cell");
+    categoryCell.textContent = category;
+
+    const tipCell = document.createElement("div");
+    tipCell.classList.add("sheet-cell");
+    tipCell.textContent = tip;
+
+    const benefitCell = document.createElement("div");
+    benefitCell.classList.add("sheet-cell");
+    benefitCell.textContent = benefit;
+
+    // Create delete button
+    const actionCell = document.createElement("div");
+    actionCell.classList.add("sheet-cell");
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      newRow.remove();
+    });
+    actionCell.appendChild(deleteButton);
+
+    // Append cells to the row
+    newRow.appendChild(categoryCell);
+    newRow.appendChild(tipCell);
+    newRow.appendChild(benefitCell);
+    newRow.appendChild(actionCell);
+
+    // Append the new row to the SmartSheet
+    smartsheet.appendChild(newRow);
+  }
+
+  // Handle form submission to add new row
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Get values from input fields
+    const category = document.getElementById("category").value;
+    const tip = document.getElementById("tip").value;
+    const benefit = document.getElementById("benefit").value;
+
+    // Add the new row
+    addRow(category, tip, benefit);
+
+    // Clear the form fields
+    form.reset();
+  });
+
+  // Sort rows by category
+  sortButton.addEventListener("click", () => {
+    const rows = Array.from(document.querySelectorAll(".sheet-row:not(.header-row)"));
+
+    rows.sort((a, b) => {
+      const categoryA = a.querySelector(".sheet-cell").textContent.toLowerCase();
+      const categoryB = b.querySelector(".sheet-cell").textContent.toLowerCase();
+      return categoryA.localeCompare(categoryB);
+    });
+
+    // Append sorted rows back to the SmartSheet
+    rows.forEach(row => smartsheet.appendChild(row));
+  });
+});
+
+  </script>
+</body>
+</html>

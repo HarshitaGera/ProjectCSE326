@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effective Communication Skills</title>
+<style>
+    /* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2em;
+  color: #0073e6;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Skills Section */
+#skills {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.skill {
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.skill-title {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #0073e6;
+  text-align: left;
+  background-color: #e6f2ff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.skill-title:hover {
+  background-color: #cce0ff;
+}
+
+.skill-content {
+  padding: 15px;
+  font-size: 1em;
+  color: #333;
+  display: none;
+  background-color: #fff;
+}
+
+/* Video Section */
+#video-section {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#video-section h2 {
+  font-size: 1.5em;
+  color: #0073e6;
+  margin-bottom: 15px;
+}
+
+iframe {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  .skill-title {
+    font-size: 1em;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <header>
+    <h1>Effective Communication Skills</h1>
+    <p>Learn and develop key communication skills for success in both personal and professional settings.</p>
+  </header>
+
+  <!-- Communication Skills Section -->
+  <section id="skills">
+    <div class="skill">
+      <button class="skill-title">1. Active Listening</button>
+      <div class="skill-content">
+        <p>Focus fully on the speaker, avoid interrupting, and show interest in what they are saying. Reflect back what you've heard to confirm understanding.</p>
+      </div>
+    </div>
+
+    <div class="skill">
+      <button class="skill-title">2. Clarity and Conciseness</button>
+      <div class="skill-content">
+        <p>Be clear and concise in your messages. Use simple language to avoid misunderstandings, and get to the point without unnecessary details.</p>
+      </div>
+    </div>
+
+    <div class="skill">
+      <button class="skill-title">3. Empathy</button>
+      <div class="skill-content">
+        <p>Try to understand the feelings and perspectives of others. Show genuine concern for their needs and viewpoints to build trust and rapport.</p>
+      </div>
+    </div>
+
+    <div class="skill">
+      <button class="skill-title">4. Non-Verbal Communication</button>
+      <div class="skill-content">
+        <p>Be mindful of body language, facial expressions, and tone of voice. Non-verbal cues can convey as much information as spoken words.</p>
+      </div>
+    </div>
+
+    <div class="skill">
+      <button class="skill-title">5. Constructive Feedback</button>
+      <div class="skill-content">
+        <p>Give feedback that is positive, specific, and focused on behaviors rather than personal attributes. Aim to help others improve constructively.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video-section">
+    <h2>Learn More: Effective Communication Skills Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/HAnw168huqA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </section>
+
+  <script >
+    document.addEventListener("DOMContentLoaded", () => {
+  // Get all skill-title buttons
+  const titles = document.querySelectorAll(".skill-title");
+
+  // Add event listener to each button
+  titles.forEach((title) => {
+    title.addEventListener("click", () => {
+      // Toggle the visibility of the content
+      const content = title.nextElementSibling;
+      content.style.display = content.style.display === "block" ? "none" : "block";
+
+      // Toggle active class
+      title.classList.toggle("active");
+    });
+  });
+});
+
+  </script>
+</body>
+</html>
